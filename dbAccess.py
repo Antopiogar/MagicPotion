@@ -1,3 +1,3 @@
-class DbAccess():
-    def __init__(self):
+class DbAccess:
+    def userInList():
         pass
