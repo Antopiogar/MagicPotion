@@ -12,9 +12,9 @@ class Menu(tk.Frame):
         self._setElements_()
 
     def _add_elements_(self):
-        self.start = tk.Button(self,text="start", width=20,command=self._start_)
-        self.credits = tk.Button(self,text="credits" ,  width=20,command=self._credits_)
-        self.exit = Button(self,text="exit", width=20,command=self._exit_)
+        self.start = tk.Button(self,text="START", width=20,command=self._start_)
+        self.credits = tk.Button(self,text="CREDITS" ,  width=20,command=self._credits_)
+        self.exit = Button(self,text="EXIT", width=20,command=self._exit_)
 
     def _start_(self):
         self.controller.show_frame("LoginPage")
@@ -25,9 +25,9 @@ class Menu(tk.Frame):
         self._add_elements_()
         self._canvas.pack(expand=True, fill= tk.BOTH)
         self._canvas.create_image(0,0,image=self.bg, anchor="nw")
-        self.start.place(relx=0.35, y=350)
-        self.credits.place(relx=0.35, y=390)
-        self.exit.place(relx=0.35, y=430)
+        self.start.place(relx=0.35, y=350,relwidth=0.3)
+        self.credits.place(relx=0.35, y=390,relwidth=0.3)
+        self.exit.place(relx=0.35, y=430,relwidth=0.3)
 
     def on_closing(self):
         sys.exit(0)

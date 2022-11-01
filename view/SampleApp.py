@@ -27,7 +27,7 @@ class SampleApp(tk.Tk):
             self.frames[page_name] = frame
             frame.grid(row=0, column=0, sticky="nsew")
         self._add_special_class(container=container)
-        self.show_frame("MenuUser")
+        self.show_frame("Menu")
 
     def _add_special_class(self,container):
         aDel=ADelete(parent=container,controller=self,win=self)
