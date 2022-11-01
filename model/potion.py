@@ -1,9 +1,9 @@
-from audioop import avg
-from Ingredient import Ingredient
+import math
+from model.Ingredient import Ingredient
 
 
 class potion():
-    self_ingredients = []
+    
 
     def __init__(self, name):
         self._name = name
@@ -11,6 +11,7 @@ class potion():
         self._water = 0
         self._air = 0
         self._earth = 0
+        self_ingredients = []
 
     def _add_ingredient(self, ingredient):
         a = Ingredient()
@@ -29,7 +30,7 @@ class potion():
         if (self._fire+ingredient._fire) > 9:
             if(self._water+ingredient._water) < 1:
                 return False
-        if (self._water+ingredient._water) > avg(((self._air+ingredient._air), (self._earth+ingredient._earth))):
+        if (self._water+ingredient._water) > math.avg(((self._air+ingredient._air), (self._earth+ingredient._earth))):
             canMade=False
         return canMade
 
