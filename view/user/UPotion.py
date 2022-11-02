@@ -17,7 +17,7 @@ class UPotion(tk.Frame):
 
 
     def _add_elements_(self):
-        self._lb=tk.Listbox(self._canvas,selectmode=tk.SINGLE)
+        self._lb=tk.Listbox(self._canvas,selectmode=tk.MULTIPLE)
         self._txt_name=tk.Entry(self._canvas,textvariable=self._name_var,font=("Arial",15))
         self._btn_confirm = tk.Button(self._canvas,text="confirm"  ,command=self._add_,font=("Arial",15))
         self._exitButton = tk.Button(self._canvas,text="exit", command=self._exit_,font=("Arial",15))
@@ -47,7 +47,7 @@ class UPotion(tk.Frame):
         self._txt_name.place(relx=0.25,y=150,relwidth=0.5)
         self._btn_confirm.place(relx=0.15,rely=0.8,relwidth=0.7)
         self._menuButton.place(relx=0.15,rely=0.9,relwidth=0.7)
-        self._lb.place(relx=0.15,y=200,relwidth=0.7)
+        self._lb.place(relx=0.15,y=240,relwidth=0.7,relheight=0.3)
 
     def _set_values(self,n,f,w,a,e,id):
         self._id=id
