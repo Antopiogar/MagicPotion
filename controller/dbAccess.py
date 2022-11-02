@@ -10,7 +10,8 @@ class DbAccess:
             host="localhost",
             user="root",
             password="",
-            database="magicpotion") 
+            database="magicpotion"
+        ) 
         mycursor = mydb.cursor()
         query=f"""SELECT * FROM Users ORDER BY id asc"""
         mycursor.execute(query)
