@@ -11,12 +11,12 @@ CREATE TABLE users (
 
 CREATE TABLE potions (
 	id int PRIMARY KEY AUTO_INCREMENT ,
-    nome varchar (25) NOT null
+    name varchar (25) NOT null unique
 );
 
 CREATE TABLE ingredients (
 	id int PRIMARY KEY AUTO_INCREMENT ,
-    nome varchar (25) NOT null,
+    name varchar (25) NOT null,
     fire int not null,
     air int not null,
     water int not null,
@@ -30,13 +30,3 @@ CREATE TABLE pozioni_ingredienti (
     FOREIGN KEY (fk_ingredients) REFERENCES ingredients(id),
     PRIMARY KEY (fk_potions,fk_ingredients) 
 );
-
-INSERT INTO `ingredients`( `name`, `fire`, `air`, `water`, `earth`) VALUES (
-    ('Pescepalla',4,7,99,0),
-    ('Occhio di ragno',0,12,37,3),
-    ('Ram di Inf2',99,99,12,0),
-    ('Piede di coniglio',0,37,58,33),
-    ('polvere di Luminite',29,69,70,99),
-    ('Anima di Admin',99,99,99,99),
-    ('marmellata dimenticata nel frigo da un anno',0,69,99,40)
-   )
