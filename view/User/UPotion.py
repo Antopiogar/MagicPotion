@@ -26,7 +26,18 @@ class UPotion(tk.Frame):
 
     def _add_(self):
         name=self._name_var.get()
-        p=potion()
+        lst=[]
+        for i in self._lb.curselection():
+            sel=self._lb.get(i)
+            val=sel.split(",")
+            id=val[0]
+            lst.append(id)
+        if len(lst)<3:
+            print("Devi inserire almeno 3 elementi")
+        print(lst)
+        DbAccess._add_potion(name,lst)
+            
+        
     def _clearAll_(self):
         self._txt_name.delete(0, tk.END)
         self._id=0
