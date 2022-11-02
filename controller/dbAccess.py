@@ -1,6 +1,7 @@
 from model.Ingredient import Ingredient
 from model.user import user
 import mysql.connector
+from pkg_resources._vendor.jaraco.functools import except_
 
 class DbAccess:
     
@@ -106,4 +107,30 @@ class DbAccess:
         pass
     def _delete_potions():
         pass
-
+    
+    def _add_potion(name,lst):
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="magicpotion") 
+        mycursor = mydb.cursor()
+        mycursor2=mydb.cursor()
+        queryP=f"""INSERT INTO Potions (name) VALUES (%s);"""
+        ls=[]
+        ls.append(name.__str__()) 
+        mycursor.execute(queryP,ls)
+        r=mycursor.fetchall()
+        mydb.commit()
+        queryId=f"""SELECT Potions.id FROM Potions WHERE Potions.name=%s"""
+        mycursor2.execute(queryId,ls)
+        r=mycursor.fetchall()
+        ls.clear()
+        for i in range(0,len(lst)):
+            query=f"""INSERT INTO Pozioni_Ingredienti (fk_potions,fk_ingredients) VALUES (%s,%s)"""
+            p=f"{mycursor2.lastrowid},{lst[i]}"
+            print(p)    
+            mycursor.execute(query,p.split(","))
+            mycursor.fetchall()
+            mydb.commit()
+        
