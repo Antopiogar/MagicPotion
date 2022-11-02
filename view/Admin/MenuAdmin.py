@@ -40,7 +40,7 @@ class MenuAdmin(tk.Frame):
         self.win.geometry("800x500")
 
     def _del_(self):
-        self._editPage._reinitialize_lb_()
+        self._delPage._reinitialize_lb_()
         self.controller.show_frame("ADelete")
         self.win.geometry("800x500")
 

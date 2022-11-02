@@ -8,8 +8,8 @@ class ADelete(tk.Frame):
         self.win=win
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        self.bg= tk.PhotoImage(file="./img/sfondoBase.png")
-        self._canvas= tk.Canvas(self,width= 799, height= 500)
+        self.bg= tk.PhotoImage(file="./img/sfondoDeleteIngredients.png")
+        self._canvas= tk.Canvas(self,width= 800, height= 500)
         
         self._setElements_()
 
@@ -26,7 +26,7 @@ class ADelete(tk.Frame):
 
     def _reinitialize_lb_(self):
         self._lb.delete(0,tk.END)
-        self._add_ingredients_()   
+        self._add_ingredients_()  
 
     def _menu_(self):
         self.controller.show_frame("MenuAdmin")
@@ -38,6 +38,7 @@ class ADelete(tk.Frame):
             val=sel.split(",")
         idDel=val[0]
         DbAccess._delete_ingredients(id=idDel)
+        self._reinitialize_lb_()
 
     def _setElements_(self):
         self._add_elements_()
