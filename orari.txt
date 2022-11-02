@@ -8,3 +8,5 @@
 31/10/22 da 09:50 a 12:30       inizio bug fix schermate
 01/11/22 da 09:28 a 12:00       Edit e Delete ingredients (con DB), PotionMenu
 01/11/22 da 16:50 a 18:00		    Login ed inizio Rebuild Grafico
+02/11/22 da 10:15 a 11:30	      Continuo Rebuild
+02/11/22 da 17:35 a 19:35       Inizio Add Potions
