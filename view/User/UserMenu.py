@@ -16,7 +16,7 @@ class MenuUser(tk.Frame):
 
     def _add_elements_(self):
         self.start = tk.Button(self,text="Add Potion", width=20,command=self._add_)
-        self.credits = tk.Button(self,text="Edit Potion" ,  width=20,command=self._edit_)
+        self.credits = tk.Button(self,text="See Potions" ,  width=20,command=self._edit_)
         self.delete = tk.Button(self,text="Delete Potion" ,  width=20,command=self._del_)
         self.exit = Button(self,text="EXIT", width=20,command=self._exit_)
 
@@ -36,7 +36,7 @@ class MenuUser(tk.Frame):
 
     def _edit_(self):
         self._editPage._reinitialize_lb_()
-        self.controller.show_frame("UModify")
+        self.controller.show_frame("USee")
         self.win.geometry("800x500")
 
     def _del_(self):

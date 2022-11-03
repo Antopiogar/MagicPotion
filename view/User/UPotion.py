@@ -27,15 +27,22 @@ class UPotion(tk.Frame):
     def _add_(self):
         name=self._name_var.get()
         lst=[]
+        l=[]
         for i in self._lb.curselection():
             sel=self._lb.get(i)
             val=sel.split(",")
             id=val[0]
             lst.append(id)
+            l.append(Ingredient(id,val[1],val[2],val[3],val[4],val[5]))
         if len(lst)<3:
             print("Devi inserire almeno 3 elementi")
         print(lst)
-        DbAccess._add_potion(name,lst)
+        p=potion(name=name,lstIng=l)
+        points=p._points_()
+        if(p._can_exist()):   
+            DbAccess._add_potion(name,lst,points)
+        else:
+            self._name_var.set("YOUR POTION'LL EXPLODE")
             
         
     def _clearAll_(self):
