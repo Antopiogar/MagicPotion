@@ -7,7 +7,8 @@ from view.Admin.Ingredients import AIngredients
 from view.Admin.AModify import AModify
 from view.Admin.ADelete import ADelete
 from view.User.UPotion import UPotion
-from view.User.UModify import UModify
+from view.User.USee import USee
+from view.User.SeeIngredientsList import SeeIngredients
 from view.User.UserMenu import MenuUser
 
 class SampleApp(tk.Tk):
@@ -27,7 +28,7 @@ class SampleApp(tk.Tk):
             self.frames[page_name] = frame
             frame.grid(row=0, column=0, sticky="nsew")
         self._add_special_class(container=container)
-        self.show_frame("UPotion")
+        self.show_frame("MenuUser")
 
     def _add_special_class(self,container):
         aDel=ADelete(parent=container,controller=self,win=self)
@@ -42,8 +43,11 @@ class SampleApp(tk.Tk):
         potPage=UPotion(parent=container,controller=self,win=self)
         self.frames["UPotion"] = potPage
         potPage.grid(row=0, column=0, sticky="nsew")
-        mPotion=UModify(parent=container,controller=self,win=self,potionwin=UPotion)
-        self.frames["UModify"] = mPotion
+        seeIngr=SeeIngredients(parent=container,controller=self,win=self)
+        self.frames["SeeIngredientsList"]=seeIngr
+        seeIngr.grid(row=0, column=0, sticky="nsew")
+        mPotion=USee(parent=container,controller=self,win=self,seeIng=seeIngr)
+        self.frames["USee"] = mPotion
         mPotion.grid(row=0, column=0, sticky="nsew")
         mAdm=MenuAdmin(parent=container,controller=self,win=self,ingPage=ingPage,editPage=mIng,delPage=aDel)
         self.frames["MenuAdmin"]= mAdm
@@ -51,6 +55,7 @@ class SampleApp(tk.Tk):
         mUse=MenuUser(parent=container,controller=self,win=self,ingPage=potPage,editPage=mPotion,delPage=None)
         self.frames["MenuUser"]=mUse
         mUse.grid(row=0, column=0, sticky="nsew")
+        
 
 
     def show_frame(self, page_name):
