@@ -6,6 +6,15 @@ class Ingredient:
         self._water = water
         self._air = air
         self._earth = earth
+    
+    def _get_fire_(self):
+        return self._fire
+    def _get_water_(self):
+        return self._water
+    def _get_air_(self):
+        return self._air
+    def _get_earth_(self):
+        return self._earth
 
     def __str__(self):
         return f"""{self._id}, {self._name}, {self._fire}, {self._water}, {self._air}, {self._earth}"""

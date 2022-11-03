@@ -1,40 +1,83 @@
-import math
 from model.Ingredient import Ingredient
-
 
 class potion():
     
 
-    def __init__(self, name):
+    def __init__(self, name,lstIng,points=None):
         self._name = name
         self._fire = 0
         self._water = 0
         self._air = 0
         self._earth = 0
-        self_ingredients = []
-
-    def _add_ingredient(self, ingredient):
-        a = Ingredient()
-        if self.canAddIngredient():
-            self._ingredients.append(ingredient)
-            return True
-        else:
+        self._ingredients = lstIng
+        self._set_elements_()
+        
+    def _set_elements_(self):
+        self._set_air()
+        self._set_Fire_()
+        self._set_water_()
+        self._set_earth()
+    
+    def _set_Fire_(self):
+        for i in self._ingredients:
+            self._fire+=int(i._get_fire_())
+            
+    def _set_water_(self):
+        for i in self._ingredients:
+            self._water+=int(i._get_water_())
+            
+    def _set_air(self):
+        for i in self._ingredients:
+            self._air+=int(i._get_air_())
+            
+    def _set_earth(self):
+        for i in self._ingredients:
+            self._earth+=int(i._get_earth_())
+              
+    def _limit_1_(self):
+        if self._fire>=29:
+            print("controllo 1 false")
             return False
-
-    def canAddIngredient(self, ingredient):
-        canMade = True
-        if (self._fire+ingredient._fire) > 29:
-            canMade = False
-        if (self._air+ingredient._air) > (int((self._fire+ingredient._fire)/2)+1) and (int((self._fire+ingredient._fire)/2)+1) >= 5:
-            canMade = False
-        if (self._fire+ingredient._fire) > 9:
-            if(self._water+ingredient._water) < 1:
+        print("controllo 1 true")
+        return True
+    
+    def _limit_2_(self):
+        if self._fire>=5:
+            if self._air>=1+(self._fire)/2:
+                print("controllo 2 false")
                 return False
-        if (self._water+ingredient._water) > math.avg(((self._air+ingredient._air), (self._earth+ingredient._earth))):
-            canMade=False
-        return canMade
-
-    def _point_(self):
-        point = int(self._fire)+int(self._water) + \
-            int(self._air)+int(self._earth)
-        return point
+        print("Controllo 2 true")
+        return True 
+    
+    def _limit_3_(self):
+        
+        if self._fire>9 and self._water<1:
+            print("controllo 3 false")
+            return False
+        print("controllo 3 true")
+        return True
+        
+    def _limit_4_(self):
+        if self._water<self.avgAirEarth():
+            print("controllo 4 false")
+            return False
+        print("controllo 4 true")
+        return True
+    
+    def avgAirEarth(self):
+        return (self._air+self._earth)/2
+        
+    
+    def _can_exist(self):
+        if self._limit_1_() and self._limit_2_() and self._limit_3_() and  self._limit_4_():
+            return True
+        return False
+   
+    def _points_(self):
+        p=0
+        pF=int(self._fire/2)
+        pA=int(self._air/7)
+        pW=int(self._water/5)
+        pE=int(self._earth/3)
+        p+=pF+pA+pW+pE
+        return p
