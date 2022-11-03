@@ -119,16 +119,22 @@ class DbAccess:
         queryP=f"""INSERT INTO Potions (name) VALUES (%s);"""
         ls=[]
         ls.append(name.__str__()) 
+        print(ls)
         mycursor.execute(queryP,ls)
-        r=mycursor.fetchall()
+        
+        r=mycursor.fetchall().__str__()
         mydb.commit()
         queryId=f"""SELECT Potions.id FROM Potions WHERE Potions.name=%s"""
         mycursor2.execute(queryId,ls)
         r=mycursor.fetchall()
+        print(f"r={r}")
+        r=r.__str__()
+        r=r.replace("[", " ").replace("(", " ").replace(","," ").replace(")"," ").replace("]"," ").strip()
+        
         ls.clear()
         for i in range(0,len(lst)):
             query=f"""INSERT INTO Pozioni_Ingredienti (fk_potions,fk_ingredients) VALUES (%s,%s)"""
-            p=f"{mycursor2.lastrowid},{lst[i]}"
+            p=f"{int(r)},{int(lst[i])}"
             print(p)    
             mycursor.execute(query,p.split(","))
             mycursor.fetchall()
