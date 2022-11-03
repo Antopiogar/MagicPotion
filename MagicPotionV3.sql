@@ -5,8 +5,7 @@ USE magicPotion ;
 CREATE TABLE users (
 	id int PRIMARY KEY AUTO_INCREMENT ,
     username varchar (25) NOT null,
-    pass varchar (25) NOT null,
-    isAdmin BOOLEAN NOT null
+    pass varchar (25) NOT null
 );
 
 CREATE TABLE potions (
