@@ -1,7 +1,7 @@
 from model.Ingredient import Ingredient
 from model.user import user
 import mysql.connector
-from pkg_resources._vendor.jaraco.functools import except_
+from model.potionLite import potionLite
 
 class DbAccess:
     
@@ -101,6 +101,47 @@ class DbAccess:
 
     def _see_potions():
         l = []
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="magicpotion") 
+        mycursor = mydb.cursor()
+        query="""SELECT * FROM Potions"""
+        mycursor.execute(query)
+        result=mycursor.fetchall()
+        lst=[]
+        lIng=DbAccess._see_ingredients()
+        for r in result:
+            for i in range(0,3):
+                lst.append(r[i])
+            obj=potionLite(id=lst[0],name=lst[1],points=lst[2])
+            l.append(obj.__str__())
+            lst.clear()
+        return l
+    
+    def _see_Ingredients_of(id):
+        l = []
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="magicpotion") 
+        mycursor = mydb.cursor()
+        lid=[]
+        lid.append(id)
+        query=f"""SELECT Ingredients.* FROM Ingredients,pozioni_ingredienti as pi WHERE pi.fk_potions=%s and pi.fk_ingredients=Ingredients.id ORDER BY Ingredients.id asc"""
+        mycursor.execute(query,lid)
+        result=mycursor.fetchall()
+        lst=[]
+        for r in result:
+            for i in range(0,6):
+                lst.append(r[i])
+            obj=Ingredient(lst[0],lst[1],lst[2],lst[3],lst[4],lst[5])
+            print(f"ingrediente QUERY: {obj}")
+            l.append(obj.__str__())
+            lst.clear()
+        print(f"CONTENUTO DI l = {l}")
         return l
     
     def _modify_potions():
@@ -108,7 +149,7 @@ class DbAccess:
     def _delete_potions():
         pass
     
-    def _add_potion(name,lst):
+    def _add_potion(name,lst,points):
         mydb = mysql.connector.connect(
             host="localhost",
             user="root",
@@ -116,12 +157,13 @@ class DbAccess:
             database="magicpotion") 
         mycursor = mydb.cursor()
         mycursor2=mydb.cursor()
-        queryP=f"""INSERT INTO Potions (name) VALUES (%s);"""
+        queryP=f"""INSERT INTO Potions (name,points) VALUES (%s,%s);"""
         ls=[]
-        ls.append(name.__str__()) 
+        ls.append(name.__str__())
+        ls.append(points.__str__()) 
         print(ls)
         mycursor.execute(queryP,ls)
-        
+        ls.pop(1)
         r=mycursor.fetchall().__str__()
         mydb.commit()
         queryId=f"""SELECT Potions.id FROM Potions WHERE Potions.name=%s"""
