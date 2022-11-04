@@ -10,3 +10,5 @@
 01/11/22 da 16:50 a 18:00       Login ed inizio Rebuild Grafico
 02/11/22 da 10:15 a 11:30       Continuo Rebuild
 02/11/22 da 17:35 a 19:35       Inizio Add Potions
+03/11/22 da 18:25 a 20:25       Add Potions
+04/11/22 da 19:00 a 20:15       Delete Potions
