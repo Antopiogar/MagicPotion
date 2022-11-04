@@ -111,13 +111,13 @@ class DbAccess:
         mycursor.execute(query)
         result=mycursor.fetchall()
         lst=[]
-        lIng=DbAccess._see_ingredients()
         for r in result:
             for i in range(0,3):
                 lst.append(r[i])
             obj=potionLite(id=lst[0],name=lst[1],points=lst[2])
             l.append(obj.__str__())
             lst.clear()
+        print(f"LISTA = {l}")
         return l
     
     def _see_Ingredients_of(id):
@@ -146,8 +146,25 @@ class DbAccess:
     
     def _modify_potions():
         pass
-    def _delete_potions():
-        pass
+    def _delete_potions(id):
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="magicpotion") 
+        mycursor = mydb.cursor()
+        pippo=[]
+        pippo.append(id)
+        query="""DELETE FROM Potions WHERE id=%s"""
+        q2="""DELETE FROM pozioni_ingredienti WHERE fk_potions=%s"""
+        mycursor.execute(q2,pippo)
+        result=mycursor.fetchall()
+        mydb.commit()
+        mycursor.execute(query,pippo)
+        result=mycursor.fetchall()
+        mydb.commit()
+        print(query)
+        print(result)
     
     def _add_potion(name,lst,points):
         mydb = mysql.connector.connect(
