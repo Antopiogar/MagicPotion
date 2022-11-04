@@ -10,6 +10,7 @@ from view.User.UPotion import UPotion
 from view.User.USee import USee
 from view.User.SeeIngredientsList import SeeIngredients
 from view.User.UserMenu import MenuUser
+from view.User.UDelete import UDelete
 
 class SampleApp(tk.Tk):
 
@@ -52,9 +53,13 @@ class SampleApp(tk.Tk):
         mAdm=MenuAdmin(parent=container,controller=self,win=self,ingPage=ingPage,editPage=mIng,delPage=aDel)
         self.frames["MenuAdmin"]= mAdm
         mAdm.grid(row=0, column=0, sticky="nsew")
-        mUse=MenuUser(parent=container,controller=self,win=self,ingPage=potPage,editPage=mPotion,delPage=None)
+        uDel=UDelete(parent=container,controller=self,win=self)
+        self.frames["UDelete"] = uDel
+        uDel.grid(row=0, column=0, sticky="nsew")
+        mUse=MenuUser(parent=container,controller=self,win=self,ingPage=potPage,editPage=mPotion,delPage=uDel)
         self.frames["MenuUser"]=mUse
         mUse.grid(row=0, column=0, sticky="nsew")
+        
         
 
 
