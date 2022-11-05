@@ -81,3 +81,18 @@ class potion():
         pE=int(self._earth/3)
         p+=pF+pA+pW+pE
         return p
+
+    def _restore_value_(self):
+        self._fire = 0
+        self._water = 0
+        self._air = 0
+        self._earth = 0
+        
+        
+    def _cambia_ing(self,l):
+        self._restore_value_()
+        self._set_elements_()
+        if self._can_exist():
+            return True
+        return False
+        
