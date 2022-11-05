@@ -144,8 +144,23 @@ class DbAccess:
         print(f"CONTENUTO DI l = {l}")
         return l
     
-    def _modify_potions():
-        pass
+    def _modify_potions(lst):
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="magicpotion") 
+        mycursor = mydb.cursor()
+        print(f"""lst = {lst}""")
+        query=f"""UPDATE pozioni_ingredienti SET fk_ingredients=%s WHERE fk_ingredients=%s"""
+        mycursor.execute(query,lst)
+        result=mycursor.fetchall()
+        mydb.commit()
+        print(query)
+        print(f"result= {result}")
+        
+        
+        
     def _delete_potions(id):
         mydb = mysql.connector.connect(
             host="localhost",
@@ -164,7 +179,7 @@ class DbAccess:
         result=mycursor.fetchall()
         mydb.commit()
         print(query)
-        print(result)
+        print("risultato query= "+result)
     
     def _add_potion(name,lst,points):
         mydb = mysql.connector.connect(
