@@ -12,3 +12,5 @@
 02/11/22 da 17:35 a 19:35       Inizio Add Potions
 03/11/22 da 18:25 a 20:25       Add Potions
 04/11/22 da 19:00 a 20:15       Delete Potions
+05/11/22 da 12:00 a 14:00       Edit Potions
+05/11/22 da 17:30 a 18:30       Bug fix
