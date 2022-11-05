@@ -26,6 +26,9 @@ class UPotion(tk.Frame):
 
     def _add_(self):
         name=self._name_var.get()
+        if name.strip()=="":
+            self._name_var.set("YOUR POTION'LL EXPLODE")
+            return False
         lst=[]
         l=[]
         for i in self._lb.curselection():
@@ -36,6 +39,8 @@ class UPotion(tk.Frame):
             l.append(Ingredient(id,val[1],val[2],val[3],val[4],val[5]))
         if len(lst)<3:
             print("Devi inserire almeno 3 elementi")
+            self._name_var.set("YOU MUST SELECT MINIMUM THREE INGREDIENTS")
+            return False
         print(lst)
         p=potion(name=name,lstIng=l)
         points=p._points_()
