@@ -43,7 +43,8 @@ class AIngredients(tk.Frame):
             w=int(water)
             a=int(air)
             e=int(earth)
-        
+            if a<0 or f<0 or w<0 or e<0 or name.strip()=="":
+                self._name_var.set("ERROR IN INGREDIENTS VALUES")
         except:
             self._name_var.set("ERROR IN INGREDIENTS VALUES")
         if(self._id==0):
