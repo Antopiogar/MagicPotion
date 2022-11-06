@@ -7,7 +7,7 @@ Per avviare è necessario inserire nel terminale questo comando ed inserire nel 
 pip install mysql-connector-python==8.0.29
 
 
-Presentazione: https://1drv.ms/p/s!AsGtTD3NcuPTiF3qYwAdkEwOeMVC?e=4JBmeZ 
+Presentazione: https://view.genial.ly/636252e486a7be0011fa06c0/interactive-content-interactive-creativity
 
 
 Gantt: https://1drv.ms/x/s!AsGtTD3NcuPTiGNvExDditVP_b-h?e=IJ5km1
