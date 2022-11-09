@@ -11,7 +11,7 @@ class USee(tk.Frame):
         self._editP=editP
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        self.bg= tk.PhotoImage(file="./img/sfondoEditPotion.png")
+        self.bg= tk.PhotoImage(file="./img/SeeYourPotions.png")
         self._canvas= tk.Canvas(self,width= 799, height= 500)
         self._setElements_()
 

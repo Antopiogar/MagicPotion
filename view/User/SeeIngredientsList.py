@@ -8,12 +8,13 @@ class SeeIngredients(tk.Frame):
         self.win=win
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        self.bg= tk.PhotoImage(file="./img/sfondoEditIngredients.png")
+        self.bg= tk.PhotoImage(file="./img/SeeYourPotion.png")
         self._canvas= tk.Canvas(self,width= 799, height= 500)
         self._setElements_()
 
 
     def _add_ingredients_(self,id):
+        self._id=id
         for ing in DbAccess._see_Ingredients_of(id):
             print(ing)
             self._lb.insert(1,ing.__str__())

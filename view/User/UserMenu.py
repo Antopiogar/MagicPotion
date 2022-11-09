@@ -1,5 +1,5 @@
 import sys
-import  tkinter as tk
+import tkinter as tk
 from tkinter.ttk import Button
 
 class MenuUser(tk.Frame):

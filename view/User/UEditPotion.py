@@ -3,7 +3,6 @@ import  tkinter as tk
 from model.potion import potion 
 from model.Ingredient import Ingredient
 from controller.dbAccess import DbAccess
-from pip._vendor.typing_extensions import Self
 
 class UEditPotion(tk.Frame):
     def __init__(self, parent, controller,win):
@@ -15,7 +14,7 @@ class UEditPotion(tk.Frame):
         self._setElements_()
         self._edited=None
 
-
+    
     def _add_ingredients_(self,id=0):
         if id!=0:
             self._edited=id
@@ -72,6 +71,7 @@ class UEditPotion(tk.Frame):
         if p._cambia_ing(l):
             listIdtoEdit.append(idNew)
             listIdtoEdit.append(idOld)
+            listIdtoEdit.append(self._edited)
             print(f"Elemeti da modificare={listIdtoEdit}")
             DbAccess._modify_potions(listIdtoEdit)
             self._reinitialize_lb_()
