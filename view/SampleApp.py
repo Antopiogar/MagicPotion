@@ -19,6 +19,7 @@ class SampleApp(tk.Tk):
         tk.Tk.__init__(self, *args, **kwargs)
         self.title=("Magic Potion")
         self.resizable(False,False)
+        self.iconbitmap(r'./img/icona.ico')
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
