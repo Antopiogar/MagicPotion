@@ -26,11 +26,12 @@ class DbAccess:
                 lst.append(r[i])
             obj=user(lst[0],lst[1],lst[2])
             users.append(obj)
+            lst.clear()
         logged=False
         for usr in users:
             if usr._is_logged(us,psw):        
                 logged=True
-        lst.clear()
+        
         return logged
 
     def _add_ingredient(a):
