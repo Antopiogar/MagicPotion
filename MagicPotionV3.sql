@@ -30,6 +30,6 @@ CREATE TABLE pozioni_ingredienti (
     PRIMARY KEY (fk_potions,fk_ingredients) 
 );
 
-INSERT INTO users (username,password) VALUES (
+INSERT INTO users (username,pass) VALUES (
 	"user","user"
 );
