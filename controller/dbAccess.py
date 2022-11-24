@@ -6,7 +6,6 @@ from model.potionLite import potionLite
 class DbAccess:
     
     def userInList(us,psw):
-        l = []
         mydb = mysql.connector.connect(
             host="localhost",
             user="root",
@@ -14,7 +13,7 @@ class DbAccess:
             database="magicpotion"
         ) 
         mycursor = mydb.cursor()
-        query=f"""SELECT * FROM Users ORDER BY id asc"""
+        query=f"""SELECT * FROM Users ORDER BY Users.id asc"""
         mycursor.execute(query)
         result=mycursor.fetchall()
         print(query)
@@ -41,7 +40,7 @@ class DbAccess:
             password="",
             database="magicpotion") 
         mycursor = mydb.cursor()
-        pippo=f""""{a._name}",{a._fire},{a._water},{a._air},{a._earth}"""
+        pippo=f"""{a._name},{a._fire},{a._water},{a._air},{a._earth}"""
         query=f"INSERT INTO Ingredients (name,fire,water,air,earth) VALUES (%s,%s,%s,%s,%s)"
         mycursor.execute(query,pippo.split(","))
         result=mycursor.fetchall()
