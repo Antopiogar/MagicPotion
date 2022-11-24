@@ -29,3 +29,7 @@ CREATE TABLE pozioni_ingredienti (
     FOREIGN KEY (fk_ingredients) REFERENCES ingredients(id),
     PRIMARY KEY (fk_potions,fk_ingredients) 
 );
+
+INSERT INTO users (username,password) VALUES (
+	"user","user"
+);
